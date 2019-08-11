@@ -43,6 +43,6 @@ public class VINController extends BaseController {
     public String getVIN(){
 
 
-        return VINGeneration.generateVIN("Europe", 2000);
+        return VINGeneration.generateVIN();
     }
 }

@@ -28,25 +28,25 @@ public class VINGeneration {
         return new String(buf);
     }
 
-    public static String generateVIN(String country, int year){
-        return generateWMI(country) + generateVDS() + generateVIS(year);
+    public static String generateVIN() {
+        return generateWMI() + generateVDS() + generateVIS();
     }
 
-    private static String generateWMI(String country) {
+    private static String generateWMI() {
         int ind = 0;
         try {
             Map<String, String> countryCodes = new HashMap<>();
-            //TODO: Change zones to countries
-            countryCodes.put("Africa", "A-H");
-            countryCodes.put("Asia", "J-R");
-            countryCodes.put("Europe", "S-Z");
-            countryCodes.put("North America", "1-5");
-            countryCodes.put("Oceania", "6-7");
-            countryCodes.put("South America", "8-9");
+            //Change zones to countries
+            countryCodes.put("0", "A-H");
+            countryCodes.put("1", "J-R");
+            countryCodes.put("2", "S-Z");
+            countryCodes.put("3", "1-5");
+            countryCodes.put("4", "6-7");
+            countryCodes.put("5", "8-9");
 
-            String mask = countryCodes.get(country);
+            String mask = countryCodes.get((int) (Math.random() * 6));
 
-            //TODO: it's for X-X pattern. need XX-XX pattern
+            //it's for X-X pattern. need XX-XX pattern
 
             StringBuilder builder = new StringBuilder();
 
@@ -59,7 +59,7 @@ public class VINGeneration {
             builder.append(symbols.charAt((int) (Math.random() * symbols.length())));
 
             return builder.toString();
-        } catch (StringIndexOutOfBoundsException e){
+        } catch (StringIndexOutOfBoundsException e) {
             return "ERROR IN generateWMI " + ind + "!!!!";
         }
     }
@@ -75,15 +75,15 @@ public class VINGeneration {
             builder.append("X");
 
             return builder.toString();
-        } catch (StringIndexOutOfBoundsException e){
+        } catch (StringIndexOutOfBoundsException e) {
             return "ERROR IN generateVDS";
         }
     }
 
-    private static String generateVIS(int year) {
+    private static String generateVIS() {
         try {
             String lettersForYear = "ABCDEFGHJKLMNPRSTVWXY123456789";
-            int yearOffset = Math.abs(year - 1980);
+            int yearOffset = Math.abs((int) (Math.random() * 3000) - 1980);
             StringBuilder builder = new StringBuilder();
             builder.append(lettersForYear.charAt(yearOffset % lettersForYear.length()));
 
@@ -97,7 +97,7 @@ public class VINGeneration {
             }
 
             return builder.toString();
-        } catch (StringIndexOutOfBoundsException e){
+        } catch (StringIndexOutOfBoundsException e) {
             return "ERROR IN generateVIS";
         }
     }
