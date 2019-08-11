@@ -41,8 +41,6 @@ public class VINController extends BaseController {
     @RequestMapping(value = "/getVIN", method = {GET, POST})
     @ResponseBody
     public String getVIN(){
-
-
         return VINGeneration.generateVIN();
     }
 }

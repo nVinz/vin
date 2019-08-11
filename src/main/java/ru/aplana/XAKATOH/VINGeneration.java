@@ -33,7 +33,6 @@ public class VINGeneration {
     }
 
     private static String generateWMI() {
-        int ind = 0;
         try {
             Map<String, String> countryCodes = new HashMap<>();
             //Change zones to countries
@@ -51,16 +50,13 @@ public class VINGeneration {
             StringBuilder builder = new StringBuilder();
 
             int randomCharacterNumber = (int) (Math.random() * (symbols.indexOf(mask.split("-")[1]) - symbols.indexOf(mask.split("-")[0])) + symbols.indexOf(mask.split("-")[0]));
-            ind++;
             builder.append(symbols.charAt(randomCharacterNumber));
-            ind++;
             builder.append(symbols.charAt((int) (Math.random() * symbols.length())));
-            ind++;
             builder.append(symbols.charAt((int) (Math.random() * symbols.length())));
 
             return builder.toString();
         } catch (StringIndexOutOfBoundsException e) {
-            return "ERROR IN generateWMI " + ind + "!!!!";
+            return "ERROR IN generateWMI";
         }
     }
 
