@@ -43,7 +43,7 @@ public class VINGeneration {
             countryCodes.put("4", "6-7");
             countryCodes.put("5", "8-9");
 
-            String mask = countryCodes.get((int) (Math.random() * 6));
+            String mask = countryCodes.get(String.valueOf((int) (Math.random() * 6)));
 
             //it's for X-X pattern. need XX-XX pattern
 
