@@ -6,6 +6,12 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import java.util.Properties;
 
+/*
+    run jar:
+    mvn package;
+    java -jar D:/genVin.jar 127.0.0.1 8080
+
+ */
 @SpringBootApplication()
 public class Application {
     private static ConfigurableApplicationContext context = null;

@@ -34,16 +34,16 @@ public class VINGeneration {
 
     private static String generateWMI() {
         try {
-            Map<String, String> countryCodes = new HashMap<>();
+            Map<Integer, String> countryCodes = new HashMap<>();
             //Change zones to countries
-            countryCodes.put("0", "A-H");
-            countryCodes.put("1", "J-R");
-            countryCodes.put("2", "S-Z");
-            countryCodes.put("3", "1-5");
-            countryCodes.put("4", "6-7");
-            countryCodes.put("5", "8-9");
+            countryCodes.put(0, "A-H");
+            countryCodes.put(1, "J-R");
+            countryCodes.put(2, "S-Z");
+            countryCodes.put(3, "1-5");
+            countryCodes.put(4, "6-7");
+            countryCodes.put(5, "8-9");
 
-            String mask = countryCodes.get(String.valueOf((int) (Math.random() * 6)));
+            String mask = countryCodes.get((int) (Math.random() * 6));
 
             //it's for X-X pattern. need XX-XX pattern
 
