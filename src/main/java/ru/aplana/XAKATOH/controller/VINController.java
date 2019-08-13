@@ -41,6 +41,31 @@ public class VINController extends BaseController {
     @RequestMapping(value = "/getVIN", method = {GET, POST})
     @ResponseBody
     public String getVIN(){
-        return VINGeneration.generateVIN();
+        Random random = new Random();
+        return "<style>" +
+                "a{" +
+                "text-align:center;" +
+                "display:inline-block;" +
+                "padding:0.3em 1.2em;" +
+                "margin:0 0.1em 0.1em 0;" +
+                "border:0.16em solid rgba(255,255,255,0);" +
+                "border-radius:1em;" +
+                "box-sizing: border-box;" +
+                "text-decoration:none;" +
+                "font-family:'Roboto',sans-serif;" +
+                "font-weight:300;" +
+                "font-size:40pt;" +
+                "color:#000000;" +
+                "text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);" +
+                "text-align:center;" +
+                "align:middle;" +
+                "transition: all 0.2s;" +
+                "}" +
+                "</style>" +
+                "<a style=\"background-color:" +
+                String.format("#%06x", random.nextInt(256*256*256)) +
+                "\">" +
+                VINGeneration.generateVIN()+
+                "</a>";
     }
 }
